@@ -1,1 +1,13 @@
-<p>themes works!</p>
+<div class="themes">
+  <mat-selection-list #themesList>
+    <mat-list-option *ngFor="let theme of themes"
+                     [(selected)]="theme.selected"
+                     [value]="theme">
+      {{theme.name}}
+    </mat-list-option>
+  </mat-selection-list>
+  <a mat-button color="black"
+     (click)="startQuiz()">
+    Get questions
+  </a>
+</div>

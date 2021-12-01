@@ -1,1 +1,42 @@
-<p>question works!</p>
+<!--<div class="question">-->
+<!--  <div class="question-title">Question</div>-->
+<!--  <div class="category">-->
+<!--    Category:-->
+<!--    {{questions[currQuestion].category}}-->
+<!--  </div>-->
+<!--  <div class="text">-->
+<!--    Question:-->
+<!--    {{questions[currQuestion].text}}-->
+<!--  </div>-->
+<!--  <div class="answers">-->
+<!--    Answers:-->
+<!--    <mat-selection-list #answersList>-->
+<!--      <mat-list-option *ngFor="let answer of questions[currQuestion].answers"-->
+<!--                       [(selected)]="answer.selected">-->
+<!--        {{answer.answer}}-->
+<!--      </mat-list-option>-->
+<!--    </mat-selection-list>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+  <!--  <link href='style.css' rel='stylesheet' type='text/css'>-->
+  <link rel="icon" type="x-icon" href="icon.png">
+  <link rel="shortcut icon" type="x-icon" href="icon.png">
+  <title>quiz-front</title>
+</head>
+<body>
+<!--<script type="application/javascript"-->
+<!--        src="questions.js">-->
+<!--</script>-->
+<hr>
+<h2 style="text-align:center;" id="question-number">Loading...</h2>
+<p class="question" id="question-text">
+  {{questions[currQuestion].text}}
+</p>
+<button *ngFor="let answer of questions[currQuestion].answers"
+        class="button neutral" (click)="doSomething()">{{answer.answer}}</button>
+<br>
+</body>

@@ -12,10 +12,11 @@ export class QuestionService {
 
   getQuestions(themes: number[]): Observable<Question> {
     return new Observable<Question>((subscriber) => {
-      subscriber.next(new Question("1", "2",
-        "3", "4", ["5"], [1]))
+      subscriber.next(new Question("1", "samiy iteresniy proect",
+        "pochemy verstka takoe govno",
+        "4", ["5", "agagsda", "saad"], [1]))
       subscriber.next(new Question("2", "3",
-        "4", "5", ["6"], [12]))
+        "4", "5", ["6", "8", "10"], [12]))
     })
   }
 }
