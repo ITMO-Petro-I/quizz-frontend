@@ -1,36 +1,44 @@
 <div class="main">
-  <a mat-button color="black" (click)="isFormHidden=!isFormHidden">Add question</a>
-  <div class="form" *ngIf="!isFormHidden">
-    <div class="question-form">
-      <mat-form-field class="question-category" appearance="fill">
-        <mat-label>Category</mat-label>
-        <input [value]="questionForm.category" matInput placeholder="Cold War">
-      </mat-form-field>
+  <div class="add-button">
+    <button mat-flat-button color="black" (click)="isFormHidden=!isFormHidden">Add question</button>
+    <!--    <a mat-button color="black" (click)="isFormHidden=!isFormHidden">Add question</a>-->
+    <div class="form" *ngIf="!isFormHidden">
+      <div class="question-form">
+        <mat-form-field class="question-category" appearance="fill">
+          <mat-label>Category</mat-label>
+          <input [value]="questionForm.category" matInput placeholder="Cold War">
+        </mat-form-field>
 
-      <mat-form-field class="question-text" appearance="fill">
-        <mat-label>question text</mat-label>
-        <textarea [value]="questionForm.text" matInput placeholder="Cold War start..."></textarea>
-      </mat-form-field>
+        <mat-form-field class="question-text" appearance="fill">
+          <mat-label>question text</mat-label>
+          <textarea [value]="questionForm.text" matInput placeholder="Cold War start..."></textarea>
+        </mat-form-field>
 
-      <!--      <mat-form-field class="example-full-width" appearance="fill">-->
-      <!--        <mat-label>question text</mat-label>-->
-      <!--        <textarea matInput placeholder="Cold War start..."></textarea>-->
-      <!--      </mat-form-field> image?-->
-      <div class="question-answers">
-        <mat-label>Answers</mat-label>
-        <ul>
-          <li *ngFor="let answer of questionForm.answers">
-            <input matInput [value]="answer">
-          </li>
-        </ul>
-        <button (click)="onClick()">add answer</button>
+        <!--      <mat-form-field class="example-full-width" appearance="fill">-->
+        <!--        <mat-label>question text</mat-label>-->
+        <!--        <textarea matInput placeholder="Cold War start..."></textarea>-->
+        <!--      </mat-form-field> image?-->
+        <div class="question-answers">
+          <mat-label>Answers</mat-label>
+          <ul>
+            <li *ngFor="let answer of questionForm.answers">
+              <input matInput [value]="answer">
+            </li>
+          </ul>
+          <button mat-stroked-button color="white" (click)="onClick()">add answer</button>
+        </div>
+        <mat-form-field class="question-correct-answers" color="white" appearance="fill">
+          <mat-label>Correct answers id</mat-label>
+          <input matInput (change)="parseCorrAnswers($event)" placeholder="1, 2, 3">
+        </mat-form-field>
+        <button mat-stroked-button color="white" (click)="sendQuestion()">send new question</button>
       </div>
-      <mat-form-field class="question-correct-answers" appearance="fill">
-        <mat-label>Correct answers id</mat-label>
-        <input matInput (change)="parseCorrAnswers($event)" placeholder="1, 2, 3">
-      </mat-form-field>
-      <button (click)="sendQuestion()">send new question</button>
     </div>
   </div>
-  <a mat-button color="black" (click)="router.navigate(['/themes'])">Start quiz</a>
+  <div class="start-button">
+    <button mat-flat-button color="black" (click)="router.navigate(['/themes'])">Start quiz</button>
+  </div>
+  <div class="get-id-button">
+    <button mat-flat-button color="black" (click)="router.navigate(['/themes'])">Get question</button>
+  </div>
 </div>

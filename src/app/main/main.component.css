@@ -4,6 +4,48 @@
   background: #bbbbbb;
 }
 
+.start-button {
+  padding-top: 1rem;
+}
+
+.get-id-button {
+  padding-top: 1rem;
+}
+
+::ng-deep .mat-flat-button {
+  height: 3rem;
+  width: 15rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: white;
+}
+
+::ng-deep .mat-form-field {
+  color: white!important;
+  background-color: black;
+}
+
+::ng-deep .mat-label {
+  color: white!important;
+  background-color: black!important;
+}
+
+.question-answers {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.main {
+  height: 100%;
+  background: url("../static/img/tal.png");
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .question-form * {
   flex-direction: row;
 }

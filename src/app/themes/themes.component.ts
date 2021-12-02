@@ -14,8 +14,10 @@ export class ThemesComponent implements OnInit {
   constructor(public router: Router) {
 
     this.themes = [
-      new ThemeView(1, "abcd"),
-      new ThemeView(2, "dce")];
+      new ThemeView(1, "Theme 1"),
+      new ThemeView(2, "Theme 2"),
+      new ThemeView(3, "Theme 3"),
+      new ThemeView(4, "Theme 4")];
   }
 
   ngOnInit(): void {
