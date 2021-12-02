@@ -19,24 +19,19 @@
 <!--  </div>-->
 
 <!--</div>-->
-
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
-  <!--  <link href='style.css' rel='stylesheet' type='text/css'>-->
-  <link rel="icon" type="x-icon" href="icon.png">
-  <link rel="shortcut icon" type="x-icon" href="icon.png">
-  <title>quiz-front</title>
-</head>
-<body>
-<!--<script type="application/javascript"-->
-<!--        src="questions.js">-->
-<!--</script>-->
-<hr>
-<h2 style="text-align:center;" id="question-number">Loading...</h2>
-<p class="question" id="question-text">
-  {{questions[currQuestion].text}}
-</p>
-<button *ngFor="let answer of questions[currQuestion].answers"
-        class="button neutral" (click)="doSomething()">{{answer.answer}}</button>
-<br>
-</body>
+<div class="background">
+  <div class="main">
+    <hr>
+    <!--  <h2 style="text-align:center;" id="question-number">Loading...</h2>-->
+    <div class="image">
+      <img style="height: 500px; display: block"
+           src="https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"/>
+    </div>
+    <p class="question" id="question-text">
+      {{questions[currQuestion].text}}
+    </p>
+    <button *ngFor="let answer of questions[currQuestion].answers"
+            class="button neutral" (click)="doSomething()">{{answer.answer}}</button>
+    <br>
+  </div>
+</div>

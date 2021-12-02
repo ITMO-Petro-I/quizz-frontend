@@ -1,23 +1,29 @@
-.mat-list-option {
-  color: black;
-}
+/*.mat-list-option {*/
+/*  color: black;*/
+/*}*/
 
-.question {
-  font-size: 1.2rem;
-  display: flex;
-  flex-direction: column;
-}
+/*.question {*/
+/*  font-size: 1.2rem;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
 
-.question * {
-  margin: 1rem;
-}
+/*.question * {*/
+/*  margin: 1rem;*/
+/*}*/
 
-html {
-  background-color: #bbbbbb;
+.background {
+  background-color: #bbbbbb!important;
   padding: 0px;
   scroll-behavior: smooth;
 }
-body {
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
   width: 80%;
   min-height: calc(100vh - 4em);
   margin: 0 auto;
