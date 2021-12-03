@@ -5,12 +5,12 @@ abstract class AbstractQuestion {
   image: string;
   correct: number[];
 
-  protected constructor(id: string, category: string, text: string, image: string, correct: number[]) {
-    this.id = id;
-    this.category = category;
-    this.text = text;
-    this.image = image;
-    this.correct = correct;
+  protected constructor(payload: Partial<AbstractQuestion>) {
+    this.id = payload.id || "";
+    this.category = payload.category || "";
+    this.text = payload.text || "";
+    this.image = payload.image || "";
+    this.correct = payload.correct || [];
   }
 
   clear() {
@@ -24,18 +24,23 @@ abstract class AbstractQuestion {
 export class Question extends AbstractQuestion {
   answers: string[];
 
-  constructor(id: string, category: string, text: string, image: string, answers: string[], correct: number[]) {
-    super(id, category, text, image, correct);
-    this.answers = answers;
+  constructor(payload: Partial<Question>) {
+    super(payload);
+    this.answers = payload.answers || [];
   }
 
   toView() {
-    return new QuestionView(this.id,
-      this.category,
-      this.text,
-      this.image,
-      this.answers,
-      this.correct
+    let payload = {...this};
+    payload.answers.forEach((answer) => new AnswerWithSelect(answer));
+    return new QuestionView(
+      {
+        id: this.id,
+        category: this.category,
+        text: this.text,
+        image: this.image,
+        answers: this.answers.map((answer) => new AnswerWithSelect(answer)),
+        correct: this.correct
+      }
     );
   }
 
@@ -46,19 +51,11 @@ export class Question extends AbstractQuestion {
 }
 
 export class QuestionView extends AbstractQuestion {
-  // Id       string   `dynamo:"id" json:"id" validate:"required"`
-  // Category string   `dynamo:"category" json:"category" validate:"required"`
-  // Text     string   `dynamo:"question" json:"question" validate:"required"`
-  // Image    string   `dynamo:"image" json:"image" validate:"required"`
-  // Answers  []string `dynamo:"answers" json:"answers"`
-  // Correct  []uint   `dynamo:"correct" json:"correct"`
   answers: AnswerWithSelect[];
 
-  constructor(id: string, category: string, text: string, image: string, answers: string[], correct: number[]) {
-    super(id, category, text, image, correct);
-    this.answers = answers.map(
-      (answ) => new AnswerWithSelect(answ)
-    );
+  constructor(payload: Partial<QuestionView>) {
+    super(<Partial<AbstractQuestion>>payload);
+    this.answers = payload.answers || [];
   }
 
   override clear() {
