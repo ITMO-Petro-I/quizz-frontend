@@ -24,14 +24,21 @@
     <hr>
     <!--  <h2 style="text-align:center;" id="question-number">Loading...</h2>-->
     <div class="image">
-      <img style="height: 500px; display: block"
+      <img style="height: 300px; display: block"
            src="https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"/>
     </div>
-    <p class="question" id="question-text">
-      {{questions[currQuestion].text}}
-    </p>
-    <button *ngFor="let answer of questions[currQuestion].answers"
-            class="button neutral" (click)="doSomething()">{{answer.answer}}</button>
+
+    <div *ngIf="questions && questions[currQuestion]; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <p class="question" id="question-text">{{questions[currQuestion].text}}</p>
+      <button *ngFor="let answer of questions[currQuestion].answers"
+              class="button neutral" (click)="doSomething()">
+        {{answer.answer}}
+      </button>
+    </ng-template>
+    <ng-template #elseBlock>
+      <h2 style="text-align:center;" id="question-number">Loading...</h2>
+    </ng-template>
     <br>
   </div>
 </div>
