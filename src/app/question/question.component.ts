@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {map, parseInt} from "lodash";
-import {QuestionView} from "../core/models/question.model";
+import {parseInt} from "lodash";
+import {Question, QuestionView} from "../core/models/question.model";
+import {QuestionMockService} from "../core/services/question.mock.service";
 import {QuestionService} from "../core/services/question.service";
 
 @Component({
@@ -15,14 +16,16 @@ export class QuestionComponent implements OnInit {
   currQuestion: number
 
   ngOnInit(): void {
-    this.service
-      .getQuestions(this.themesId)
-      .subscribe((q) => this.questions.push(q.toView()));
-
+    this.questionService
+      .getAll()
+      .subscribe((q: Question[]) => {
+        this.questions = q.map(question => new Question(question).toView());
+      })
   }
 
   constructor(private route: ActivatedRoute,
-              private service: QuestionService) {
+              private questionMockService: QuestionMockService,
+              private questionService: QuestionService) {
     this.themesId = []
     this.route.queryParamMap
       .subscribe(params => {
