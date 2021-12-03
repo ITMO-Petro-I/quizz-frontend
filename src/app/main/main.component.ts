@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from "../core/models/question.model";
 import {Router} from '@angular/router';
+import {Theme, ThemeView} from "../core/models/theme.model";
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,8 @@ import {Router} from '@angular/router';
 export class MainComponent implements OnInit {
   isFormHidden: boolean = true;
   questionForm: Question;
+  isNewCatHidden: boolean = true;
+  categoryForm: Theme;
 
   constructor(public router: Router) {
     const payload = {
@@ -20,6 +23,7 @@ export class MainComponent implements OnInit {
       answers: ["3"],
       correct: [0]
     }
+    this.categoryForm = new ThemeView(1, "base");
     this.questionForm = new Question(payload)
   }
 
@@ -52,5 +56,9 @@ export class MainComponent implements OnInit {
     this.questionForm.correct = src.split(',')
       .map(String.prototype.trim)
       .map(parseInt);
+  }
+
+  addCategory() {
+
   }
 }

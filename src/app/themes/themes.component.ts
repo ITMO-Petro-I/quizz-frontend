@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Theme} from "../core/models/theme.model";
+import {Theme, ThemeView} from "../core/models/theme.model";
 import {Router} from "@angular/router";
 import {filter, map} from "lodash";
+import {Question} from "../core/models/question.model";
+import {CategoryService} from "../core/services/category.service";
 
 @Component({
   selector: 'app-themes',
@@ -9,18 +11,18 @@ import {filter, map} from "lodash";
   styleUrls: ['./themes.component.css']
 })
 export class ThemesComponent implements OnInit {
-  themes: ThemeView[]
+  themes: ThemeView[] = []
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private categoryService: CategoryService) {
 
-    this.themes = [
-      new ThemeView(1, "Theme 1"),
-      new ThemeView(2, "Theme 2"),
-      new ThemeView(3, "Theme 3"),
-      new ThemeView(4, "Theme 4")];
   }
 
   ngOnInit(): void {
+    this.categoryService
+      .getAll()
+      .subscribe((c: Theme[]) => {
+        this.themes = c.map(category => new ThemeView(category.id, category.name));
+      })
   }
 
   startQuiz() {
@@ -31,18 +33,5 @@ export class ThemesComponent implements OnInit {
           id: map(filter(this.themes, 'selected'), 'id')
         }
       });
-  }
-}
-
-class ThemeView implements Theme {
-  id: number;
-  name: string;
-  selected: boolean;
-
-
-  constructor(id: number, name: string, selected: boolean = false) {
-    this.id = id;
-    this.name = name;
-    this.selected = selected;
   }
 }

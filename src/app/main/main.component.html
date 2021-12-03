@@ -32,6 +32,7 @@
           <input matInput (change)="parseCorrAnswers($event)" placeholder="1, 2, 3">
         </mat-form-field>
         <button mat-stroked-button color="white" (click)="sendQuestion()">send new question</button>
+        <button mat-stroked-button color="white" (click)="(addCategory())">add category</button>
       </div>
     </div>
   </div>
@@ -41,4 +42,11 @@
   <div class="get-id-button">
     <button mat-flat-button color="black" (click)="router.navigate(['/themes'])">Get question</button>
   </div>
+<!--  <div class="new-cat">-->
+<!--    <mat-form-field class="question-category" appearance="fill">-->
+<!--      <mat-label>Category</mat-label>-->
+<!--      <input [value]="categoryForm.name" matInput placeholder="Base">-->
+<!--    </mat-form-field>-->
+<!--    <button mat-stroked-button color="white" (click)="(addCategory())">add category</button>-->
+<!--  </div>-->
 </div>
