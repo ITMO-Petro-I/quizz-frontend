@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AnswerWithSelect, Question} from "../core/models/question.model";
+import {Question} from "../core/models/question.model";
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,15 @@ export class MainComponent implements OnInit {
   questionForm: Question;
 
   constructor(public router: Router) {
-    this.questionForm = new Question("1", "2", "3", "4", ["3"], [3])
+    const payload = {
+      id: "1",
+      category: "2",
+      text: "3",
+      image: "4",
+      answers: ["3"],
+      correct: [0]
+    }
+    this.questionForm = new Question(payload)
   }
 
   goToPage(pageName: string) {
