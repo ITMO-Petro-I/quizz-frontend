@@ -26,7 +26,6 @@ export class ThemesComponent implements OnInit {
   }
 
   startQuiz() {
-
     this.router.navigate(['/question'],
       {
         queryParams: {

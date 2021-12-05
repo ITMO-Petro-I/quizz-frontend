@@ -22,34 +22,45 @@
 
 ::ng-deep .mat-form-field {
   color: white!important;
-  background-color: black;
+  /*background-color: black;*/
 }
 
 ::ng-deep .mat-label {
   color: white!important;
-  background-color: black!important;
+  /*background-color: black!important;*/
 }
 
 .question-answers {
-  background-color: black;
+  /*background-color: black;*/
   color: white;
   text-align: center;
-}
-
-.main {
-  height: 100%;
-  background: url("../static/img/tal.png");
-  background-size: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .question-form * {
   flex-direction: row;
 }
 
-.add-category {
-  padding-top: 1rem;
+.question-form {
+  background-color: transparent;
+}
+
+.ul-question {
+  /*background: #bbbbbb;*/
+}
+
+.send-button {
+  color: white;
+}
+
+.answers-form {
+  color: white;
+  /*text-align: center;*/
+}
+
+.answers-form .answers-label {
+  text-align: center;
+}
+
+.answers-form .answers-button {
+  text-align: center;
 }

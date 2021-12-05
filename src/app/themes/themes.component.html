@@ -1,11 +1,17 @@
 <div class="themes">
-  <mat-selection-list #themesList>
-    <mat-list-option *ngFor="let theme of themes"
-                     [(selected)]="theme.selected"
-                     [value]="theme">
-      {{theme.name}}
-    </mat-list-option>
-  </mat-selection-list>
+  <div *ngIf="themes.length != 0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <mat-selection-list #themesList>
+      <mat-list-option *ngFor="let theme of themes"
+                       [(selected)]="theme.selected"
+                       [value]="theme">
+        {{theme.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </ng-template>
+  <ng-template #elseBlock>
+    <h2 style="text-align:center;" id="question-number">Loading...</h2>
+  </ng-template>
   <a mat-button color="black"
      (click)="startQuiz()">
     Get questions

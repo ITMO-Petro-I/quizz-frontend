@@ -1,0 +1,32 @@
+<div class="add-button">
+  <div class="form">
+    <div class="question-form">
+      <mat-form-field class="question-category" appearance="fill">
+        <mat-label>Category</mat-label>
+        <input [value]="questionForm.category" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="question-text" appearance="fill">
+        <mat-label>question text</mat-label>
+        <textarea [value]="questionForm.text" matInput></textarea>
+      </mat-form-field>
+
+      <div class="answers-form">
+        <mat-label class="answers-label">Answers</mat-label>
+
+        <mat-selection-list #shoes>
+          <mat-list-option *ngFor="let answer of questionForm.answers">
+            <input matInput [value]="answer">
+          </mat-list-option>
+        </mat-selection-list>
+        <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
+      </div>
+
+      <mat-form-field class="question-correct-answers" color="white" appearance="fill">
+        <mat-label>Correct answers id</mat-label>
+        <input matInput (change)="parseCorrAnswers($event)">
+      </mat-form-field>
+      <button mat-stroked-button color="white" class="send-button" (click)="sendQuestion()">Send new question</button>
+    </div>
+  </div>
+</div>

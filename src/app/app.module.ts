@@ -14,13 +14,15 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     ThemesComponent,
-    MainComponent
+    MainComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
