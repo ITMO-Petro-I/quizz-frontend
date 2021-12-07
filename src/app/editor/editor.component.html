@@ -14,7 +14,7 @@
       <div class="answers-form">
         <mat-label class="answers-label">Answers</mat-label>
 
-        <mat-selection-list #shoes>
+        <mat-selection-list>
           <mat-list-option *ngFor="let answer of questionForm.answers">
             <input matInput [value]="answer">
           </mat-list-option>
@@ -22,10 +22,6 @@
         <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
       </div>
 
-      <mat-form-field class="question-correct-answers" color="white" appearance="fill">
-        <mat-label>Correct answers id</mat-label>
-        <input matInput (change)="parseCorrAnswers($event)">
-      </mat-form-field>
       <button mat-stroked-button color="white" class="send-button" (click)="sendQuestion()">Send new question</button>
     </div>
   </div>

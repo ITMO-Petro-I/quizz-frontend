@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {parseInt} from "lodash";
-import {Question, QuestionView} from "../core/models/question.model";
+import {AnswerWithSelect, Question, QuestionView} from "../core/models/question.model";
 import {QuestionMockService} from "../core/services/question.mock.service";
 import {QuestionService} from "../core/services/question.service";
 
@@ -36,7 +36,7 @@ export class QuestionComponent implements OnInit {
     this.currQuestion = 0
   }
 
-  doSomething() {
+  doSomething(answer: AnswerWithSelect) {
 
   }
 }
