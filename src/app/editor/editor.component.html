@@ -1,27 +1,33 @@
 <div class="add-button">
   <div class="form">
+    <div class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
+      <div class="text-wrapper">
+        <div class="centered">Drop your file here!</div>
+      </div>
+    </div>
     <div class="question-form">
       <mat-form-field class="question-category" appearance="fill">
         <mat-label>Category</mat-label>
-        <input [value]="questionForm.category" matInput>
+        <input [(ngModel)]='questionForm.category' matInput>
       </mat-form-field>
 
       <mat-form-field class="question-text" appearance="fill">
         <mat-label>question text</mat-label>
-        <textarea [value]="questionForm.text" matInput></textarea>
+        <textarea matInput [value]="questionForm.text"></textarea>
       </mat-form-field>
 
       <div class="answers-form">
         <mat-label class="answers-label">Answers</mat-label>
 
-        <mat-selection-list>
-          <mat-list-option *ngFor="let answer of questionForm.answers">
-            <input matInput [value]="answer">
-          </mat-list-option>
-        </mat-selection-list>
+        <!--        <mat-selection-list>-->
+        <div *ngFor="let answer of questionForm.answers">
+          <textarea matInput [value]="answer"></textarea>
+          <mat-checkbox (change)="changeCorrectAnswer(answer)">Disable select</mat-checkbox>
+        </div>
+        <!--        </mat-selection-list>-->
         <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
       </div>
-
+      <button mat-stroked-button color="white" class="answers-button" (click)="log()">log</button>
       <button mat-stroked-button color="white" class="send-button" (click)="sendQuestion()">Send new question</button>
     </div>
   </div>

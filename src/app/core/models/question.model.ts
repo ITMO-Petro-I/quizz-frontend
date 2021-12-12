@@ -2,21 +2,21 @@ abstract class AbstractQuestion {
   id: string;
   category: string;
   text: string;
-  image: string;
+  image: string[];
   correct: number[];
 
   protected constructor(payload: Partial<AbstractQuestion>) {
     this.id = payload.id || "";
     this.category = payload.category || "";
     this.text = payload.text || "";
-    this.image = payload.image || "";
+    this.image = [];
     this.correct = payload.correct || [];
   }
 
   clear() {
     this.id = "";
     this.text = "";
-    this.image = "";
+    this.image = [""];
     this.correct = [];
   }
 }
