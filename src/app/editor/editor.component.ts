@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from "../core/models/question.model";
 import {FileHandle} from "../core/directives/drag.directive";
-import {create} from "lodash";
 import {QuestionService} from "../core/services/question.service";
 
 @Component({
@@ -21,7 +20,7 @@ export class EditorComponent implements OnInit {
       text: "",
       image: [],
       answers: [],
-      correct: [0]
+      correct: []
     }
     this.questionForm = new Question(payload);
   }
@@ -77,7 +76,7 @@ export class EditorComponent implements OnInit {
     }
   }
 
-  log() {
-    console.log(this.questionForm)
+  log(data : any) {
+    console.log(data)
   }
 }

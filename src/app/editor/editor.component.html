@@ -8,12 +8,12 @@
     <div class="question-form">
       <mat-form-field class="question-category" appearance="fill">
         <mat-label>Category</mat-label>
-        <input [(ngModel)]='questionForm.category' matInput>
+        <input matInput [(ngModel)]="questionForm.category"/>
       </mat-form-field>
 
       <mat-form-field class="question-text" appearance="fill">
         <mat-label>question text</mat-label>
-        <textarea matInput [value]="questionForm.text"></textarea>
+        <textarea matInput [(ngModel)]="questionForm.text"></textarea>
       </mat-form-field>
 
       <div class="answers-form">
@@ -21,13 +21,13 @@
 
         <!--        <mat-selection-list>-->
         <div *ngFor="let answer of questionForm.answers">
-          <textarea matInput [value]="answer"></textarea>
+          <textarea matInput [(ngModel)]="answer"></textarea>
           <mat-checkbox (change)="changeCorrectAnswer(answer)">Disable select</mat-checkbox>
         </div>
         <!--        </mat-selection-list>-->
         <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
       </div>
-      <button mat-stroked-button color="white" class="answers-button" (click)="log()">log</button>
+      <button mat-stroked-button color="white" class="answers-button" (click)="log(questionForm)">log</button>
       <button mat-stroked-button color="white" class="send-button" (click)="sendQuestion()">Send new question</button>
     </div>
   </div>
