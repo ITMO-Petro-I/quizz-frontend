@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {parseInt} from "lodash";
 import {AnswerWithSelect, Question, QuestionView} from "../core/models/question.model";
 import {QuestionMockService} from "../core/services/question.mock.service";
@@ -13,7 +13,9 @@ import {QuestionService} from "../core/services/question.service";
 export class QuestionComponent implements OnInit {
   themesId: number[]
   questions: QuestionView[]
-  currQuestion: number
+  current: number
+  gameOver: boolean
+  points: number
 
   ngOnInit(): void {
     this.questionService
@@ -23,20 +25,35 @@ export class QuestionComponent implements OnInit {
       })
   }
 
-  constructor(private route: ActivatedRoute,
-              private questionMockService: QuestionMockService,
-              private questionService: QuestionService) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private questionMockService: QuestionMockService,
+    private questionService: QuestionService
+  ) {
     this.themesId = []
+    this.questions = [];
+    this.current = 0;
+    this.points = 0;
+    this.gameOver = false;
+
     this.route.queryParamMap
       .subscribe(params => {
         this.themesId = params
           .getAll('id').map(parseInt)
       })
-    this.questions = []
-    this.currQuestion = 0
   }
 
-  doSomething(answer: AnswerWithSelect) {
+  selectAnswer(answer: AnswerWithSelect) {
+    if (this.questions[this.current].isCorrectAnswer(answer)) {
+      this.points++;
+    }
 
+    this.current++;
+    this.gameOver = this.current >= this.questions.length;
+  }
+
+  goToMenu() {
+    this.router.navigate(["/"]);
   }
 }

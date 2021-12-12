@@ -58,6 +58,10 @@ export class QuestionView extends AbstractQuestion {
     this.answers = payload.answers || [];
   }
 
+  isCorrectAnswer(answer : AnswerWithSelect) {
+    return this.correct.includes(this.answers.indexOf(answer));
+  }
+
   override clear() {
     super.clear();
     this.answers = [];

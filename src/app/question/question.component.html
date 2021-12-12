@@ -7,16 +7,31 @@
            src="https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg"/>
     </div>
 
-    <div *ngIf="questions && questions[currQuestion]; then thenBlock else elseBlock"></div>
-    <ng-template #thenBlock>
-      <p class="question" id="question-text">{{questions[currQuestion].text}}</p>
-      <button *ngFor="let answer of questions[currQuestion].answers"
-              class="button neutral" (click)="doSomething(answer)">
-        {{answer.answer}}
+    <div>
+      Correct answers: {{points}}
+    </div>
+
+    <div *ngIf="gameOver; then over else inProgress"></div>
+    <ng-template #over>
+      <div>Quiz is over!</div>
+      <button
+        class="button neutral"
+        (click)="goToMenu()">
+        Main menu
       </button>
     </ng-template>
-    <ng-template #elseBlock>
-      <h2 style="text-align:center;" id="question-number">Loading...</h2>
+    <ng-template #inProgress>
+      <div *ngIf="questions && questions[current]; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <p class="question" id="question-text">{{questions[current].text}}</p>
+        <button *ngFor="let answer of questions[current].answers"
+                class="button neutral" (click)="selectAnswer(answer)">
+          {{answer.answer}}
+        </button>
+      </ng-template>
+      <ng-template #elseBlock>
+        <h2 style="text-align:center;" id="question-number">Loading...</h2>
+      </ng-template>
     </ng-template>
     <br>
   </div>
