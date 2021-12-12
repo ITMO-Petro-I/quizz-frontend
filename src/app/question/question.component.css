@@ -138,7 +138,6 @@ div.axis_name {
 .spacer > div{
   margin-top: 10px;
   display: inline-block;
-  *display: inline; /* For IE7 */
   text-align: center;
 }
 .button {
