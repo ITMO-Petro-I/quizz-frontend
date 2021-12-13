@@ -1,6 +1,6 @@
 <div class="themes">
-  <div *ngIf="themes.length != 0; then thenBlock else elseBlock"></div>
-  <ng-template #thenBlock>
+  <div *ngIf="themes.length != 0; then render else loading"></div>
+  <ng-template #render>
     <mat-selection-list #themesList>
       <mat-list-option *ngFor="let theme of themes"
                        [(selected)]="theme.selected"
@@ -9,8 +9,11 @@
       </mat-list-option>
     </mat-selection-list>
   </ng-template>
-  <ng-template #elseBlock>
-    <h2 style="text-align:center;" id="question-number">Loading...</h2>
+  <ng-template #loading>
+    <div class="loading" fxLayout="row" fxLayoutAlign="center">
+      <mat-spinner></mat-spinner>
+    </div>
+    <h2 id="question-number">Loading...</h2>
   </ng-template>
   <div>
     <button mat-flat-button color="black" (click)="startQuiz()">Get questions</button>
