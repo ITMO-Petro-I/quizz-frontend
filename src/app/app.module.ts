@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
@@ -17,6 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {CoreModule} from "./core/core.module";
 import {MainComponent} from './main/main.component';
 import {EditorComponent} from './editor/editor.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {FlexModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -28,10 +30,11 @@ import {EditorComponent} from './editor/editor.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    NoopAnimationsModule,
+    // NoopAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
@@ -40,6 +43,8 @@ import {EditorComponent} from './editor/editor.component';
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    FlexModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
