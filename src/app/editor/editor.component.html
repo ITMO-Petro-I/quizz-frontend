@@ -20,8 +20,8 @@
         <mat-label class="answers-label">Answers</mat-label>
 
         <!--        <mat-selection-list>-->
-        <div *ngFor="let answer of questionForm.answers">
-          <textarea matInput [(ngModel)]="answer"></textarea>
+        <div *ngFor="let answer of questionForm.answers; index as i">
+          <textarea matInput [(ngModel)]="questionForm.answers[i]"></textarea>
           <mat-checkbox (change)="changeCorrectAnswer(answer)">Disable select</mat-checkbox>
         </div>
         <!--        </mat-selection-list>-->

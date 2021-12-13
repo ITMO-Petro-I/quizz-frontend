@@ -15,10 +15,10 @@ export class EditorComponent implements OnInit {
 
   constructor(private questionService: QuestionService) {
     const payload = {
-      id: "",
+      id: 0,
       category: "",
       text: "",
-      image: [],
+      images: [],
       answers: [],
       correct: []
     }
@@ -26,14 +26,12 @@ export class EditorComponent implements OnInit {
   }
 
   filesDropped(files: FileHandle[]): void {
-    // console.log(files);
-
     this.droppedFiles = files;
     const file = files[0].file;
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e: any) => {
-      this.questionForm.image.push(e.target.result);
+      this.questionForm.images.push(e.target.result);
       console.log(this.questionForm)
     };
 
@@ -50,18 +48,23 @@ export class EditorComponent implements OnInit {
     this.questionForm.clear();
   }
 
-  parseCorrAnswers($event: Event) {
-    // @ts-ignore
-    let src: string = event.target.value;
-
-    this.questionForm.correct = src.split(',')
-      .map(String.prototype.trim)
-      .map(parseInt);
-  }
+  // parseCorrect($event: Event) {
+  //   // @ts-ignore
+  //   let src: string = event.target.value;
+  //
+  //   this.questionForm.correct = src.split(',')
+  //     .map(String.prototype.trim)
+  //     .map(parseInt);
+  // }
 
   sendQuestion() {
-    console.log(this.questionForm);
-    // this.questionService.create(this.questionForm)
+    this.questionService.create(this.questionForm).subscribe((id) => {
+      console.log(id);
+      this.questionService.getAll().subscribe((questions) => {
+        console.log(questions)
+        console.log(questions.find((q) => q.id === id));
+      })
+    })
   }
 
   changeCorrectAnswer(answer: string) {

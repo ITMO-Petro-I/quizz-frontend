@@ -15,7 +15,7 @@ export class QuestionService {
     return this.apiService.get('/questions');
   }
 
-  create(question: Question) {
-    this.apiService.post('/question', question);
+  create(question: Question): Observable<number> {
+    return this.apiService.post('/question', question);
   }
 }

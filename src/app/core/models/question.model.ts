@@ -1,22 +1,22 @@
 abstract class AbstractQuestion {
-  id: string;
+  id: number;
   category: string;
   text: string;
-  image: string[];
+  images: string[];
   correct: number[];
 
   protected constructor(payload: Partial<AbstractQuestion>) {
-    this.id = payload.id || "";
+    this.id = payload.id || 0;
     this.category = payload.category || "";
     this.text = payload.text || "";
-    this.image = [];
+    this.images = [];
     this.correct = payload.correct || [];
   }
 
   clear() {
-    this.id = "";
+    this.id = 0;
     this.text = "";
-    this.image = [""];
+    this.images = [""];
     this.correct = [];
   }
 }
@@ -37,7 +37,7 @@ export class Question extends AbstractQuestion {
         id: this.id,
         category: this.category,
         text: this.text,
-        image: this.image,
+        images: this.images,
         answers: this.answers.map((answer) => new AnswerWithSelect(answer)),
         correct: this.correct
       }
