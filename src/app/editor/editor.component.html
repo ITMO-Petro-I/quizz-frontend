@@ -19,12 +19,10 @@
       <div class="answers-form">
         <mat-label class="answers-label">Answers</mat-label>
 
-        <!--        <mat-selection-list>-->
         <div *ngFor="let answer of questionForm.answers; index as i">
           <textarea matInput [(ngModel)]="questionForm.answers[i]"></textarea>
-          <mat-checkbox (change)="changeCorrectAnswer(answer)">Disable select</mat-checkbox>
+          <mat-checkbox (change)="changeCorrectAnswer(answer)">Correct answer</mat-checkbox>
         </div>
-        <!--        </mat-selection-list>-->
         <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
       </div>
       <button mat-stroked-button color="white" class="answers-button" (click)="log(questionForm)">log</button>
