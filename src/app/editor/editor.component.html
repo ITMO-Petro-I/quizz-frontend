@@ -1,10 +1,5 @@
 <div class="add-button">
   <div class="form">
-    <div class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
-      <div class="text-wrapper">
-        <div class="centered">Drop your file here!</div>
-      </div>
-    </div>
     <div class="question-form">
       <mat-form-field class="question-category" appearance="fill">
         <mat-label>Category</mat-label>
@@ -23,7 +18,12 @@
           <textarea matInput [(ngModel)]="questionForm.answers[i]" ngModel [ngModelOptions]="{updateOn: 'blur'}"></textarea>
           <mat-checkbox (change)="changeCorrectAnswer(answer)">Correct answer</mat-checkbox>
         </div>
-        <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
+      </div>
+      <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">Add answer</button>
+      <div class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
+        <div class="text-wrapper">
+          <div class="centered">Drop your pictures here!</div>
+        </div>
       </div>
       <button mat-stroked-button color="white" class="answers-button" (click)="log(questionForm)">log</button>
       <button mat-stroked-button color="white" class="send-button" (click)="sendQuestion()">Send new question</button>
