@@ -1,10 +1,27 @@
 <div class="add-button">
   <div class="form">
     <div class="question-form">
-      <mat-form-field class="question-category" appearance="fill">
-        <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="questionForm.category"/>
-      </mat-form-field>
+
+
+      <div *ngIf="categories.length > 0; then render else loading"></div>
+      <ng-template #render>
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <mat-select [(value)]="questionForm.category">
+            <mat-option *ngFor="let category of categories" [value]="category.name">
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+      <ng-template #loading>
+        <h2 style="text-align:center;" id="question-number">Loading...</h2>
+      </ng-template>
+
+<!--      <mat-form-field class="question-category" appearance="fill">-->
+<!--        <mat-label>Category</mat-label>-->
+<!--        <input matInput [(ngModel)]="questionForm.category"/>-->
+<!--      </mat-form-field>-->
 
       <mat-form-field class="question-text" appearance="fill">
         <mat-label>question text</mat-label>

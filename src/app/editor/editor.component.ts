@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Question} from "../core/models/question.model";
 import {FileHandle} from "../core/directives/drag.directive";
 import {QuestionService} from "../core/services/question.service";
+import {CategoryService} from "../core/services/category.service";
+import {Theme} from "../core/models/theme.model";
 
 @Component({
   selector: 'app-editor',
@@ -12,8 +14,10 @@ import {QuestionService} from "../core/services/question.service";
 export class EditorComponent implements OnInit {
   questionForm: Question;
   droppedFiles: FileHandle[] = [];
+  categories: Theme[] = [];
 
-  constructor(private questionService: QuestionService) {
+  constructor(private questionService: QuestionService,
+              private categoryService: CategoryService) {
     const payload = {
       id: 0,
       category: "",
@@ -23,6 +27,12 @@ export class EditorComponent implements OnInit {
       correct: []
     }
     this.questionForm = new Question(payload);
+  }
+
+  ngOnInit(): void {
+    this.categoryService.getAll().subscribe((categories) => {
+      this.categories = categories;
+    })
   }
 
   filesDropped(files: FileHandle[]): void {
@@ -37,9 +47,6 @@ export class EditorComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
-
   onClick() {
     this.questionForm.answers.push("")
   }
@@ -48,22 +55,9 @@ export class EditorComponent implements OnInit {
     this.questionForm.clear();
   }
 
-  // parseCorrect($event: Event) {
-  //   // @ts-ignore
-  //   let src: string = event.target.value;
-  //
-  //   this.questionForm.correct = src.split(',')
-  //     .map(String.prototype.trim)
-  //     .map(parseInt);
-  // }
-
   sendQuestion() {
     this.questionService.create(this.questionForm).subscribe((id) => {
-      console.log(id);
-      this.questionService.getAll().subscribe((questions) => {
-        console.log(questions)
-        console.log(questions.find((q) => q.id === id));
-      })
+      console.log("Created question:", id);
     })
   }
 
