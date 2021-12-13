@@ -4,11 +4,7 @@
   background: #bbbbbb;
 }
 
-.start-button {
-  padding-top: 1rem;
-}
-
-.get-id-button {
+.main > * {
   padding-top: 1rem;
 }
 
@@ -48,8 +44,4 @@
 
 .question-form * {
   flex-direction: row;
-}
-
-.add-category {
-  padding-top: 1rem;
 }

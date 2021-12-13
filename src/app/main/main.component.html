@@ -1,21 +1,11 @@
 <div class="main">
-  <div class="add-button">
-    <button mat-flat-button color="black" (click)="router.navigate(['/editor'])">Add question</button>
-  </div>
   <div class="start-button">
     <button mat-flat-button color="black" (click)="router.navigate(['/themes'])">Start quiz</button>
   </div>
   <div class="get-id-button">
     <button mat-flat-button color="black" (click)="router.navigate(['/themes'])">Get question</button>
   </div>
-  <div class="add-category">
-    <button mat-flat-button color="white" class="add-cat" (click)="router.navigate(['/editor'])">Add category</button>
-<!--    <div *ngIf="!isNewCatHidden">-->
-<!--      <mat-form-field class="question-category" appearance="fill">-->
-<!--        <mat-label>Category</mat-label>-->
-<!--        <input [value]="categoryForm.name" matInput placeholder="Base">-->
-<!--      </mat-form-field>-->
-<!--      <button mat-stroked-button color="white" (click)="(addCategory())">Add category</button>-->
-<!--    </div>-->
+  <div class="add-button">
+    <button mat-flat-button color="black" (click)="router.navigate(['/editor'])">Add question</button>
   </div>
 </div>
