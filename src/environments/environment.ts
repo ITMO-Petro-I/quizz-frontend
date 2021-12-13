@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   api_url: "https://v7j4x1qg63.execute-api.eu-west-1.amazonaws.com",
+  s3_url: "https://quizz-dev-images-bucket.s3.eu-west-1.amazonaws.com",
 };
 
 /*

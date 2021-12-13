@@ -1,3 +1,5 @@
+import {environment} from "../../../environments/environment";
+
 abstract class AbstractQuestion {
   id: number;
   category: string;
@@ -9,14 +11,14 @@ abstract class AbstractQuestion {
     this.id = payload.id || 0;
     this.category = payload.category || "";
     this.text = payload.text || "";
-    this.images = [];
+    this.images = payload.images || [];
     this.correct = payload.correct || [];
   }
 
   clear() {
     this.id = 0;
     this.text = "";
-    this.images = [""];
+    this.images = [];
     this.correct = [];
   }
 }
@@ -37,7 +39,7 @@ export class Question extends AbstractQuestion {
         id: this.id,
         category: this.category,
         text: this.text,
-        images: this.images,
+        images: this.images.map(url => environment.s3_url + "/" + url),
         answers: this.answers.map((answer) => new AnswerWithSelect(answer)),
         correct: this.correct
       }
