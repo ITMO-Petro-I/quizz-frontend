@@ -24,7 +24,7 @@
 <!--      </mat-form-field>-->
 
       <mat-form-field class="question-text" appearance="fill">
-        <mat-label>question text</mat-label>
+        <mat-label>Text</mat-label>
         <textarea matInput [(ngModel)]="questionForm.text"></textarea>
       </mat-form-field>
 
@@ -32,8 +32,11 @@
         <mat-label class="answers-label">Answers</mat-label>
 
         <div *ngFor="let answer of questionForm.answers; index as i">
-          <textarea matInput [(ngModel)]="questionForm.answers[i]" ngModel [ngModelOptions]="{updateOn: 'blur'}"></textarea>
-          <mat-checkbox (change)="changeCorrectAnswer(answer)">Correct answer</mat-checkbox>
+          <mat-form-field class="question-text" appearance="fill" style="width: 100%">
+            <mat-label>Answer {{i + 1}}</mat-label>
+            <textarea matInput [(ngModel)]="questionForm.answers[i]" ngModel [ngModelOptions]="{updateOn: 'blur'}"></textarea>
+            <mat-checkbox (change)="changeCorrectAnswer(answer)">Correct answer</mat-checkbox>
+          </mat-form-field>
         </div>
       </div>
       <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">Add answer</button>
@@ -42,7 +45,7 @@
           <div class="centered">Drop your pictures here!</div>
         </div>
       </div>
-      <button mat-stroked-button color="white" class="answers-button" (click)="log(questionForm)">log</button>
+<!--      <button mat-stroked-button color="white" class="answers-button" (click)="log(questionForm)">log</button>-->
       <button mat-stroked-button color="white" class="send-button" (click)="sendQuestion()">Send new question</button>
     </div>
   </div>
