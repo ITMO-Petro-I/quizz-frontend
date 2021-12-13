@@ -1,42 +1,44 @@
 <div class="background">
   <div class="main">
     <hr>
-    <!--  <h2 style="text-align:center;" id="question-number">Loading...</h2>-->
-    <div>
-      Correct answers: {{points}}
-    </div>
+    <div class="!over" *ngIf="gameOver; then over else inProgress"></div>
+    <ng-template #inProgress>
+      <div>
+        Correct answers: {{points}}
+      </div>
 
-    <div class="over" *ngIf="gameOver; then over else inProgress"></div>
+      <div *ngIf="questions && currentQuestion; then render else loading"></div>
+      <ng-template #render>
+        <div class="image">
+          <div *ngFor="let img of currentQuestion.images">
+            <img style="height: 300px; display: block"
+                 [src]="img" alt="question photo"/>
+          </div>
+        </div>
+
+        <p class="question" id="question-text">{{currentQuestion.text}}</p>
+        <button *ngFor="let answer of currentQuestion.answers"
+                class="button neutral" (click)="selectAnswer(answer)">
+          {{answer.answer}}
+        </button>
+      </ng-template>
+
+      <ng-template #loading>
+        <h2 style="text-align:center;" id="question-number">Loading...</h2>
+      </ng-template>
+    </ng-template>
+
     <ng-template #over>
       <div class="over-form">
-        <div>Quiz is over!</div>
+        <h1>Quiz is over!</h1>
         <div class="result">Your result: {{points}}</div>
         <button
           class="button neutral"
           (click)="goToMenu()">
           Main menu
         </button>
+        <img style="height: 500px" src="assets/cat.png" alt="Congratulation cat"/>
       </div>
-    </ng-template>
-    <ng-template #inProgress>
-      <div class="image">
-        <div *ngFor="let img of questions[current].images">
-          <img style="height: 300px; display: block"
-               [src]="img"/>
-        </div>
-      </div>
-
-      <div *ngIf="questions && questions[current]; then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock>
-        <p class="question" id="question-text">{{questions[current].text}}</p>
-        <button *ngFor="let answer of questions[current].answers"
-                class="button neutral" (click)="selectAnswer(answer)">
-          {{answer.answer}}
-        </button>
-      </ng-template>
-      <ng-template #elseBlock>
-        <h2 style="text-align:center;" id="question-number">Loading...</h2>
-      </ng-template>
     </ng-template>
     <br>
   </div>

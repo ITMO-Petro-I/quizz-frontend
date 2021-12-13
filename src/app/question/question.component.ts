@@ -13,7 +13,7 @@ import {QuestionService} from "../core/services/question.service";
 export class QuestionComponent implements OnInit {
   themesId: number[]
   questions: QuestionView[]
-  current: number
+  currentIndex: number
   gameOver: boolean
   points: number
 
@@ -33,7 +33,7 @@ export class QuestionComponent implements OnInit {
   ) {
     this.themesId = []
     this.questions = [];
-    this.current = 0;
+    this.currentIndex = 0;
     this.points = 0;
     this.gameOver = false;
 
@@ -44,13 +44,17 @@ export class QuestionComponent implements OnInit {
       })
   }
 
+  get currentQuestion() {
+    return this.questions[this.currentIndex];
+  }
+
   selectAnswer(answer: AnswerWithSelect) {
-    if (this.questions[this.current].isCorrectAnswer(answer)) {
+    if (this.currentQuestion.isCorrectAnswer(answer)) {
       this.points++;
     }
 
-    this.current++;
-    this.gameOver = this.current >= this.questions.length;
+    this.currentIndex++;
+    this.gameOver = this.currentIndex >= this.questions.length;
   }
 
   goToMenu() {
