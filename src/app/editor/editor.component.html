@@ -20,7 +20,7 @@
         <mat-label class="answers-label">Answers</mat-label>
 
         <div *ngFor="let answer of questionForm.answers; index as i">
-          <textarea matInput [(ngModel)]="questionForm.answers[i]"></textarea>
+          <textarea matInput [(ngModel)]="questionForm.answers[i]" ngModel [ngModelOptions]="{updateOn: 'blur'}"></textarea>
           <mat-checkbox (change)="changeCorrectAnswer(answer)">Correct answer</mat-checkbox>
         </div>
         <button mat-stroked-button color="white" class="answers-button" (click)="onClick()">add answer</button>
