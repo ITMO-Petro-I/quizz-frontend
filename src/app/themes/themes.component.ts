@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Theme, ThemeView} from "../core/models/theme.model";
 import {Router} from "@angular/router";
 import {filter, map} from "lodash";
-import {Question} from "../core/models/question.model";
-import {CategoryService} from "../core/services/category.service";
+import {CategoryMockService} from "../core/services/category.mock.service";
 
 @Component({
   selector: 'app-themes',
@@ -13,7 +12,8 @@ import {CategoryService} from "../core/services/category.service";
 export class ThemesComponent implements OnInit {
   themes: ThemeView[] = []
 
-  constructor(public router: Router, private categoryService: CategoryService) {
+  constructor(public router: Router,
+              private categoryService: CategoryMockService) {
 
   }
 

@@ -1,7 +1,7 @@
 <div class="background">
   <div class="main">
     <hr>
-    <div class="!over" *ngIf="gameOver; then over else inProgress"></div>
+    <div class="over" *ngIf="gameOver; then over else inProgress"></div>
     <ng-template #inProgress>
       <div>
         Correct answers: {{points}}
@@ -24,7 +24,10 @@
       </ng-template>
 
       <ng-template #loading>
-        <h2 style="text-align:center;" id="question-number">Loading...</h2>
+          <div class="loading" fxLayout="row" fxLayoutAlign="center">
+            <mat-spinner></mat-spinner>
+          </div>
+          <h2 id="question-number">Loading...</h2>
       </ng-template>
     </ng-template>
 
