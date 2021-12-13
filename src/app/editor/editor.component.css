@@ -48,13 +48,12 @@
   /*background: #bbbbbb;*/
 }
 
-.send-button {
+.send-button,
+.answers-form,
+.answers-button {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   color: white;
-}
-
-.answers-form {
-  color: white;
-  /*text-align: center;*/
 }
 
 .answers-form .answers-label {
@@ -68,10 +67,6 @@
   /*align-items: center;*/
 }
 
-.answers-button {
-  margin-bottom: 1rem;
-  color: white;
-}
 
 /*.col-12 .rmpm .dropzone {*/
 /*  !*height: 130%;*!*/

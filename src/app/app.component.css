@@ -1,0 +1,17 @@
+::ng-deep .mat-flat-button {
+  height: 3rem;
+  width: 15rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: white;
+}
+
+::ng-deep .mat-form-field {
+  color: white!important;
+  background-color: black;
+}
+
+::ng-deep .mat-label {
+  color: white!important;
+  background-color: black!important;
+}
