@@ -10,8 +10,8 @@ export class QuestionMockService {
   constructor() {
   }
 
-  get(themes: number[]): Observable<Question> {
-    return new Observable<Question>((subscriber) => {
+  getAll(): Observable<Question[]> {
+    return new Observable<Question[]>((subscriber) => {
     })
   }
 }

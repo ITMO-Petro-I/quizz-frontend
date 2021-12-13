@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Question} from "../core/models/question.model";
 import {FileHandle} from "../core/directives/drag.directive";
 import {QuestionService} from "../core/services/question.service";
-import {CategoryService} from "../core/services/category.service";
 import {Theme} from "../core/models/theme.model";
+import {CategoryMockService} from "../core/services/category.mock.service";
 
 @Component({
   selector: 'app-editor',
@@ -17,7 +17,7 @@ export class EditorComponent implements OnInit {
   categories: Theme[] = [];
 
   constructor(private questionService: QuestionService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryMockService) {
     const payload = {
       id: 0,
       category: "",
